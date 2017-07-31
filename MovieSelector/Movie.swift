@@ -24,6 +24,7 @@ public struct Movie {
         
     }
     
+    
     private static func getMovieData (with completion: @escaping(_ success:Bool, _ object:AnyObject?)-> ()) {
         
         let session = URLSession(configuration: .default)
