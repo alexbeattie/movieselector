@@ -27,13 +27,6 @@ class MovieTableViewController: UITableViewController {
                 }
             
             }
-            
-            //            print(movieList)
-//            for movie in movieList! {
-//                print(movie.title)
-//                print(movie.imagePath)
-//                print(movie.description + "\n")
-//            }
         }
     }
    
@@ -58,6 +51,7 @@ class MovieTableViewController: UITableViewController {
         cell.textLabel?.text = movie.title
         cell.detailTextLabel?.text = movie.description
         
+        Movie.getImage(forCell: cell, withMovieObject: movie)
         
         return cell
     }
