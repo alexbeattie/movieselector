@@ -12,18 +12,28 @@ private let reuseIdentifier = "Cell"
 
 class MovieCollectionViewController: UICollectionViewController {
 
+    var nowPlaying = [Movie]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let width = collectionView!.frame.width / 3
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        loadData()
     }
-
+    func loadData() {
+        Movie.nowPlaying { (success:Bool, movieList:[Movie]?) in
+            
+            if success {
+                self.nowPlaying = movieList!
+                DispatchQueue.main.async {
+                    self.collectionView!.reloadData()
+                }
+                
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,19 +52,22 @@ class MovieCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return nowPlaying.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieCollectionViewCell
     
+        let movie = nowPlaying[indexPath.row]
+        
+        cell.movieTitleLable.text = movie.title
+        Movie.getImage(forCell: cell, withMovieObject: movie)
+        
         // Configure the cell
     
         return cell

@@ -99,7 +99,11 @@ public struct Movie {
                     let tableViewcell = cell as? UITableViewCell
                     tableViewcell?.imageView?.image = UIImage(data: imageData)
                     tableViewcell?.setNeedsLayout()
-              }
+                }else{
+                    let collectionViewCell = cell as! MovieCollectionViewCell
+                    collectionViewCell.movieImageView.image = UIImage(data: imageData)
+                    collectionViewCell.setNeedsLayout()
+                }
             }
         } else { // download an image and save on disk
             // Add CollectionViewCell Implementation
@@ -121,6 +125,11 @@ public struct Movie {
                             let tableViewcell = cell as? UITableViewCell
                             tableViewcell?.imageView?.image = UIImage(data: data)
                             tableViewcell?.setNeedsLayout()
+                        }else{
+                            let collectionViewCell = cell as! MovieCollectionViewCell
+                            collectionViewCell.movieImageView.image = UIImage(data: data)
+                            collectionViewCell.setNeedsLayout()
+
                         }
                     })
                     
