@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E9E37ED1F2FAD61003E9141 /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E37EC1F2FAD61003E9141 /* MovieCollectionViewController.swift */; };
+		8E9E37EF1F2FAD7F003E9141 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9E37EE1F2FAD7F003E9141 /* MovieCollectionViewCell.swift */; };
 		8EEAEA8D1F2EDA50009A9F91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEAEA8C1F2EDA50009A9F91 /* AppDelegate.swift */; };
 		8EEAEA921F2EDA50009A9F91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAEA901F2EDA50009A9F91 /* Main.storyboard */; };
 		8EEAEA941F2EDA50009A9F91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAEA931F2EDA50009A9F91 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E9E37EC1F2FAD61003E9141 /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
+		8E9E37EE1F2FAD7F003E9141 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		8EEAEA891F2EDA50009A9F91 /* MovieSelector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieSelector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EEAEA8C1F2EDA50009A9F91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EEAEA911F2EDA50009A9F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 			children = (
 				8EEAEA8C1F2EDA50009A9F91 /* AppDelegate.swift */,
 				8EEAEA9E1F2EDBE6009A9F91 /* MovieTableViewController.swift */,
+				8E9E37EC1F2FAD61003E9141 /* MovieCollectionViewController.swift */,
+				8E9E37EE1F2FAD7F003E9141 /* MovieCollectionViewCell.swift */,
 				8EEAEAA01F2EDC40009A9F91 /* Movie.swift */,
 				8EEAEA901F2EDA50009A9F91 /* Main.storyboard */,
 				8EEAEA931F2EDA50009A9F91 /* Assets.xcassets */,
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EEAEA9F1F2EDBE6009A9F91 /* MovieTableViewController.swift in Sources */,
+				8E9E37ED1F2FAD61003E9141 /* MovieCollectionViewController.swift in Sources */,
+				8E9E37EF1F2FAD7F003E9141 /* MovieCollectionViewCell.swift in Sources */,
 				8EEAEA8D1F2EDA50009A9F91 /* AppDelegate.swift in Sources */,
 				8EEAEAA11F2EDC40009A9F91 /* Movie.swift in Sources */,
 			);

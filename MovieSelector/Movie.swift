@@ -113,7 +113,7 @@ public struct Movie {
                     let imageFilePathString = documents! + "/\(movie.title!)"
                     let escapedImagePath = imageFilePathString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                     if FileManager.default.createFile(atPath: escapedImagePath!, contents: data, attributes: nil) {
-                        print("Image saved")
+//                        print("Image saved")
                     }
                     
                     DispatchQueue.main.async(execute: {
