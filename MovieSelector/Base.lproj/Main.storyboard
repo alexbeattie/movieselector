@@ -6,8 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Movie Table View Controller-->
         <scene sceneID="Wa4-qH-koh">
@@ -106,6 +112,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOi-HB-Ntm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="618"/>
+        </scene>
+        <!--Movie Presentation Controller-->
+        <scene sceneID="I0u-XN-GbL">
+            <objects>
+                <viewController id="lPD-5P-j7Y" customClass="MoviePresentationController" customModule="MovieSelector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="huH-B1-LaF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0E-T9-iY9">
+                                <rect key="frame" x="16" y="20" width="111" height="35"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="570-tE-7Vb">
+                                <rect key="frame" x="16" y="52.5" width="343" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="ael-Rh-cMK"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NB-gO-CEH">
+                                <rect key="frame" x="167.5" y="158" width="39" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="h0E-T9-iY9" firstAttribute="top" secondItem="mid-KP-kfo" secondAttribute="top" constant="20" id="Tf8-F9-bWv"/>
+                            <constraint firstItem="8NB-gO-CEH" firstAttribute="centerX" secondItem="mid-KP-kfo" secondAttribute="centerX" id="gr2-Hb-j6P"/>
+                            <constraint firstItem="mid-KP-kfo" firstAttribute="bottom" secondItem="8NB-gO-CEH" secondAttribute="bottom" constant="12" id="hbH-C5-OWN"/>
+                            <constraint firstItem="570-tE-7Vb" firstAttribute="leading" secondItem="mid-KP-kfo" secondAttribute="leading" constant="16" id="n77-bN-mFX"/>
+                            <constraint firstItem="mid-KP-kfo" firstAttribute="trailing" secondItem="570-tE-7Vb" secondAttribute="trailing" constant="16" id="re1-w3-MTn"/>
+                            <constraint firstItem="570-tE-7Vb" firstAttribute="top" secondItem="h0E-T9-iY9" secondAttribute="bottom" constant="8" id="whu-mj-M60"/>
+                            <constraint firstItem="h0E-T9-iY9" firstAttribute="leading" secondItem="mid-KP-kfo" secondAttribute="leading" constant="16" id="yrs-Ls-llM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mid-KP-kfo"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVg-9G-NBk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709.5999999999999" y="624.28785607196403"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I7c-xo-cVw">
