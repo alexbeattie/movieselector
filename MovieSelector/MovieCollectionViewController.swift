@@ -10,10 +10,12 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class MovieCollectionViewController: UICollectionViewController {
+class MovieCollectionViewController: UICollectionViewController, UIViewControllerPreviewingDelegate {
 
     var nowPlaying = [Movie]()
-    let movieTransitionDelegate = MovieTransitionDelegate()
+   // let movieTransitionDelegate = MovieTransitionDelegate()
+    
+    var selectedMovieByPeek:Movie?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,13 @@ class MovieCollectionViewController: UICollectionViewController {
         layout.itemSize = CGSize(width: width, height: width)
 
         loadData()
+        
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: collectionView!)
+        }
+        
+        
+        
     }
     func loadData() {
         Movie.nowPlaying { (success:Bool, movieList:[Movie]?) in
@@ -60,29 +69,75 @@ class MovieCollectionViewController: UICollectionViewController {
     
         return cell
     }
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showOverlayFor(indexPath: indexPath)
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = collectionView?.indexPathsForSelectedItems?.first {
+            let movieObject = nowPlaying[indexPath.row]
+            
+            if segue.identifier == "showDetail" {
+                let detailVC = segue.destination as! MoviewDetailViewController
+                detailVC.movieObject = movieObject
+            }
+        }
     }
     
+    // PEEK & POP
     
-    
-    func showOverlayFor (indexPath:IndexPath) {
+    // PEEK
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         
-        let sb = UIStoryboard(name:"Main", bundle: nil)
+        guard let indexPath = collectionView?.indexPathForItem(at: location),
+            let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
+        previewingContext.sourceRect = cell.frame
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
         let overlayVC = sb.instantiateViewController(withIdentifier: "Overlay") as! OverlayViewController
-        
-        transitioningDelegate = movieTransitionDelegate
-        overlayVC.transitioningDelegate = movieTransitionDelegate
-        overlayVC.modalPresentationStyle = .custom
-        
-        let movie = nowPlaying[indexPath.row]
-        
-        self.present(overlayVC, animated: true, completion: nil)
-        
-        overlayVC.movieItem = movie
     
-    
+        overlayVC.preferredContentSize = CGSize(width: 0, height: 200)
+        
+        selectedMovieByPeek = nowPlaying[indexPath.row]
+        overlayVC.movieItem = selectedMovieByPeek
+        
+        return overlayVC
+        
     }
+    
+    //POP
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let movieDetailVC = sb.instantiateViewController(withIdentifier: "MovieDetail") as! MoviewDetailViewController
+        
+        if let availableMovie = selectedMovieByPeek {
+            movieDetailVC.movieObject = availableMovie
+            show(movieDetailVC, sender: self)
+        }
+    }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        showOverlayFor(indexPath: indexPath)
+//    }
+//
+//
+//
+//    func showOverlayFor (indexPath:IndexPath) {
+//
+//        let sb = UIStoryboard(name:"Main", bundle: nil)
+//        let overlayVC = sb.instantiateViewController(withIdentifier: "Overlay") as! OverlayViewController
+//
+//        transitioningDelegate = movieTransitionDelegate
+//        overlayVC.transitioningDelegate = movieTransitionDelegate
+//        overlayVC.modalPresentationStyle = .custom
+//
+//        let movie = nowPlaying[indexPath.row]
+//
+//        self.present(overlayVC, animated: true, completion: nil)
+//
+//        overlayVC.movieItem = movie
+//
+//
+//    }
   
 
     
