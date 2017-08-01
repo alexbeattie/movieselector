@@ -16,6 +16,7 @@ class MovieAnimatedTransitioning:NSObject, UIViewControllerAnimatedTransitioning
         return 0.5
     }
     
+    
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let fromVC = transitionContext.viewController(forKey: .from)
         let fromView = fromVC!.view
@@ -28,7 +29,9 @@ class MovieAnimatedTransitioning:NSObject, UIViewControllerAnimatedTransitioning
         if isPresentation {
             containerView.addSubview(toView!)
         }
+        
         let animatingVC = isPresentation ? toVC : fromVC
+        
         let animatingView = animatingVC!.view
         
         let appearedFrame = transitionContext.finalFrame(for: animatingVC!)
@@ -41,37 +44,53 @@ class MovieAnimatedTransitioning:NSObject, UIViewControllerAnimatedTransitioning
         
         animatingView?.frame = initialFrame
         
+        
         UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 300, initialSpringVelocity: 5, options: [.allowUserInteraction, .beginFromCurrentState], animations: {
             animatingView?.frame = finalFrame
+            
             if !self.isPresentation {
                 animatingView?.alpha = 0
             }
+            
         }) { (success:Bool) in
-            fromView?.removeFromSuperview()
+            if !self.isPresentation {
+                fromView?.removeFromSuperview()
+            }
+            
+            transitionContext.completeTransition(true)
         }
-        transitionContext.completeTransition(true)
-        }
+        
     }
-class MovieTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
+    
+}
+
+
+class MovieTransitionDelegate:NSObject, UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
         let presentationController = MoviePresentationController(presentedViewController: presented, presenting: presenting)
+        
         return presentationController
+        
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
         let animationController = MovieAnimatedTransitioning()
         animationController.isPresentation = true
+        
         return animationController
-        
-        
     }
+    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
         let animationController = MovieAnimatedTransitioning()
         animationController.isPresentation = false
-        return animationController
         
-
+        return animationController
     }
+    
+    
 }
+
+
+
+

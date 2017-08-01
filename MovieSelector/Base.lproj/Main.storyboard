@@ -113,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="1001" y="618"/>
         </scene>
-        <!--Movie Presentation Controller-->
+        <!--Overlay View Controller-->
         <scene sceneID="I0u-XN-GbL">
             <objects>
-                <viewController id="lPD-5P-j7Y" customClass="MoviePresentationController" customModule="MovieSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Overlay" id="lPD-5P-j7Y" customClass="OverlayViewController" customModule="MovieSelector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="huH-B1-LaF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,9 +142,12 @@
                                 <state key="normal" title="Close">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="closePressed:" destination="lPD-5P-j7Y" eventType="touchUpInside" id="UOK-xv-cDY"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.3411764706" green="0.1529411765" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="h0E-T9-iY9" firstAttribute="top" secondItem="mid-KP-kfo" secondAttribute="top" constant="20" id="Tf8-F9-bWv"/>
                             <constraint firstItem="8NB-gO-CEH" firstAttribute="centerX" secondItem="mid-KP-kfo" secondAttribute="centerX" id="gr2-Hb-j6P"/>
@@ -157,6 +160,10 @@
                         <viewLayoutGuide key="safeArea" id="mid-KP-kfo"/>
                     </view>
                     <size key="freeformSize" width="375" height="200"/>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="570-tE-7Vb" id="sfF-Ij-JZB"/>
+                        <outlet property="titleLabel" destination="h0E-T9-iY9" id="PDw-zd-0jP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RVg-9G-NBk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
