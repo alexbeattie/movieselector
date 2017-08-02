@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MovieSelectorBridge
 
 public struct Movie {
     

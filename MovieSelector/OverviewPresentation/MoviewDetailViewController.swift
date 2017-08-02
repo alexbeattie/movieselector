@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MovieSelectorBridge
 
 class MoviewDetailViewController: UIViewController {
 
@@ -35,8 +36,4 @@ class MoviewDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         configureView()
     }
- 
-
-  
-
 }
